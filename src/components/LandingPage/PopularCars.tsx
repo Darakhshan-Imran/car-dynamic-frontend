@@ -1,3 +1,5 @@
+
+
 "use client";
 
 import React from "react";
@@ -11,6 +13,9 @@ import persons_icon from "../../../public/spec-icons/persons_icon.png";
 import Titlebar from "./titlebar";
 import Link from "next/link";
 
+
+
+
 interface ProductCard {
   id:number;
   name: string; // The name of the car
@@ -23,7 +28,11 @@ interface ProductCard {
   image: string; // URL of the car image
   is_Favorite: boolean; // Whether the car is marked as a favorite
 }
-const RecomendedCars: React.FC = () => {
+
+interface PopularCarsProps {
+  searchTerm: string; // Accept search term as a prop
+}
+const PopularCars: React.FC<PopularCarsProps> = ({ searchTerm })  => {
   const [cardData, setCardData] = React.useState<ProductCard[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<string | null>(null);
@@ -33,7 +42,7 @@ const RecomendedCars: React.FC = () => {
       try {
         // Fetch data from Sanity
         const data: ProductCard[] =
-          await client.fetch(`*[_type == "cars" && "Recommended Cars" in tags]{
+          await client.fetch(`*[_type == "cars" && "Popular Cars" in tags]{
   id,
   name,
   type,
@@ -44,12 +53,8 @@ const RecomendedCars: React.FC = () => {
   originalPrice,
   availability,
   is_favourite,
- 
-  "image":images.mainImage.asset->url
-      
-   
-      }
-    `);
+   "image":images.mainImage.asset->url
+}`);
 
         setCardData(data);
         setLoading(false);
@@ -63,6 +68,12 @@ const RecomendedCars: React.FC = () => {
     fetchData();
   }, []);
 
+  const filteredData = cardData.filter((car) =>
+    car.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+
+  
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -73,11 +84,13 @@ const RecomendedCars: React.FC = () => {
 
   return (
     <div className="wrapper mt-20">
-      <Titlebar title="Recommendation Car" />
+      <Titlebar title="Popular Cars" buttontext="View All"/>
 
       {/* Updated grid with spacing */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-1 md:gap-2 lg:gap-3 gap-4 mt-7 wrapper">
-        {cardData.map((car, index) => (
+      {filteredData.length > 0 ? (
+        
+        filteredData.map((car, index) => (
           <div
             key={index}
             className="rounded-xl shadow-md p-4 hover:shadow-lg transition w-[304px] h-[388px] bg-white"
@@ -121,7 +134,7 @@ const RecomendedCars: React.FC = () => {
             </div>
             <div className="flex justify-between items-center mt-12">
               <div className="flex flex-col gap-2">
-              <p className="text-lg font-bold">{car.priceAfterDiscount }</p>
+                <p className="text-lg font-bold">{car.priceAfterDiscount }</p>
                 <p className="text-lg font-bold">
                 {car.priceAfterDiscount ? <del className="text-sm font-semibold text-[#90A3BF]">{car.originalPrice}</del> : car.originalPrice}
 
@@ -132,23 +145,11 @@ const RecomendedCars: React.FC = () => {
               </button>
             </div>
           </div>
-        ))}
+        )
+      )):(<div className="text-center text-grat-500 mt-10">No Cars Found</div>)}
       </div>
-
-      {/* Buttons */}
-      {/* <div className="flex gap-5 justify-center items-center">
-        <button className="px-6 py-2 bg-blue-500 text-white rounded-[3px] hover:bg-blue-600 transition-colors mt-16 mb-9">
-          <Link href="/car_detail">Show Details</Link>
-        </button>
-        <button className="px-6 py-2 bg-blue-500 text-white rounded-[3px] hover:bg-blue-600 transition-colors mt-16 mb-9">
-          <Link href="/rental_form">Booking Details</Link>
-        </button>
-        <button className="px-6 py-2 bg-blue-500 text-white rounded-[3px] hover:bg-blue-600 transition-colors mt-16 mb-9">
-          <Link href="/car_rental">Check Out</Link>
-        </button> */}
-      {/* </div> */}
     </div>
   );
 };
 
-export default RecomendedCars;
+export default PopularCars;

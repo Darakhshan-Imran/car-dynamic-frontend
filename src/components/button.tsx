@@ -5,7 +5,10 @@ import { ReactNode } from "react"
 
 interface ButtonComponentProps {
   children: ReactNode;
-  className?: string;
+  href?: string;
+  className?:string;
+  onClick:()=>void
+  
 }
 
 const ButtonComponent = ({ children, className }: ButtonComponentProps) => {

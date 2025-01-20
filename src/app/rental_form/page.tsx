@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input';
 import Link from "next/link";
 import Ads1 from "../../../public/Ads1.png";
 import car1 from "../../../public/car1.png";
+import CartSummary from "../../components/Booking/CartSummary";
 
 import {
   Card,
@@ -70,80 +71,84 @@ export default function Home() {
 // Rental Summary Component
 function RentalSummary() {
   return (
-    <Card className="w-full bg-white">
-      <CardHeader>
-        <CardTitle className="text-xl font-semibold">Rental Summary</CardTitle>
-        <p className="text-sm text-gray-500">
-          Prices may change depending on the length of the rental and the price of your rental car.
-        </p>
-      </CardHeader>
-      <CardContent className="space-y-6">
-        {/* Car Details */}
-          <div className="flex items-center space-x-4">
-        {/* Left Div - Car Image */}
-  <div className="relative w-1/2">
-    <Image
-      src= {Ads1}
-      alt="Car Ad"
-      width={300}
-      height={300}
-      layout="responsive"
-      className="rounded-lg"
-    />
-
-    <div className="absolute bottom-8 left-8 w-2/3">
-      <Image
-        src={car1}
-        alt="Car"
-        width={400}
-        height={200}
-        layout="responsive"
-        className="rounded-lg"
-      />
+    <div>
+      <CartSummary/>
     </div>
-  </div>
+//     <Card className="w-full bg-white">
+//       <CardHeader>
+//         <CardTitle className="text-xl font-semibold">Rental Summary</CardTitle>
+//         <p className="text-sm text-gray-500">
+//           Prices may change depending on the length of the rental and the price of your rental car.
+//         </p>
+//       </CardHeader>
+//       <CardContent className="space-y-6">
+//         {/* Car Details */}
+//           <div className="flex items-center space-x-4">
+//         {/* Left Div - Car Image */}
+//   <div className="relative w-1/2">
+//     <Image
+//       src= {Ads1}
+//       alt="Car Ad"
+//       width={300}
+//       height={300}
+//       layout="responsive"
+//       className="rounded-lg"
+//     />
 
-  {/* Right Div - Car Details */}
-  <div className="w-2/3 space-y-1">
-    <h3 className="text-xl text-[#1A202C] font-bold tracking-wide">Nissan GT - R</h3>
-    <div className="flex items-center gap-1">
-      <RatingStar starcount={5} />
-      <span className="text-sm text-gray-500">440+ Reviews</span>
-    </div>
-  </div>
-</div>
+//     <div className="absolute bottom-8 left-8 w-2/3">
+//       <Image
+//         src={car1}
+//         alt="Car"
+//         width={400}
+//         height={200}
+//         layout="responsive"
+//         className="rounded-lg"
+//       />
+//     </div>
+//   </div>
 
-    {/* Price Breakdown */}
-      <div className="space-y-4">
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-500">Subtotal</span>
-            <span className="font-medium">$80.00</span>
-          </div>
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-500">Tax</span>
-            <span className="font-medium">$0</span>
-          </div>
+//   {/* Right Div - Car Details */}
+//   <div className="w-2/3 space-y-1">
+//     <h3 className="text-xl text-[#1A202C] font-bold tracking-wide">Nissan GT - R</h3>
+//     <div className="flex items-center gap-1">
+//       <RatingStar starcount={5} />
+//       <span className="text-sm text-gray-500">440+ Reviews</span>
+//     </div>
+//   </div>
+// </div>
 
-          {/* Promo Code */}
-          <div className="flex gap-2">
-            <Input placeholder="Apply promo code" className="h-9 text-sm border rounded-md p-2" />
-            <ButtonComponent className="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600">
-              Apply
-            </ButtonComponent>
-          </div>
+//     {/* Price Breakdown */}
+//       <div className="space-y-4">
+//           <div className="flex justify-between text-sm">
+//             <span className="text-gray-500">Subtotal</span>
+//             <span className="font-medium">$80.00</span>
+//           </div>
+//           <div className="flex justify-between text-sm">
+//             <span className="text-gray-500">Tax</span>
+//             <span className="font-medium">$0</span>
+//           </div>
 
-          {/* Total */}
-          <div className="pt-4 border-t">
-            <div className="flex justify-between">
-              <div>
-                <span className="font-semibold">Total Rental Price</span>
-                <p className="text-sm text-gray-500">Overall price rental</p>
-              </div>
-              <span className="text-xl font-semibold">$80.00</span>
-            </div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
+//           {/* Promo Code */}
+//           <div className="flex gap-2">
+//             <Input placeholder="Apply promo code" className="h-9 text-sm border rounded-md p-2" />
+//             <ButtonComponent className="px-4 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600">
+//               Apply
+//             </ButtonComponent>
+//           </div>
+
+//           {/* Total */}
+//           <div className="pt-4 border-t">
+//             <div className="flex justify-between">
+//               <div>
+//                 <span className="font-semibold">Total Rental Price</span>
+//                 <p className="text-sm text-gray-500">Overall price rental</p>
+//               </div>
+//               <span className="text-xl font-semibold">$80.00</span>
+//             </div>
+//           </div>
+//         </div>
+//       </CardContent>
+//     </Card>
+
   );
 }

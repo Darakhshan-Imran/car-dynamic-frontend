@@ -95,18 +95,18 @@ import {
           <CardFooter className="flex flex-col sm:flex-row justify-between items-center">
             <div className="flex flex-col gap-1">
               <p className="text-xl lg:text-2xl font-semibold mb-2 sm:mb-0">
-                ${car.price.toFixed(2)}/
+                {car.price.toFixed(2)}/
                 <span className="text-sm text-[#90A3BF] font-medium">day</span>
               </p>
               {car.discountedPrice && (
                 <del className="text-[#90A3BF] text-sm font-medium">
-                  ${car.discountedPrice.toFixed(2)}
+                  {car.discountedPrice.toFixed(2)}
                 </del>
               )}
             </div>
-            <ButtonComponent className="w-full sm:w-auto px-6 py-2 bg-blue-500 text-white text-base rounded-lg hover:bg-blue-600 transition-colors">
+            <button className="w-full sm:w-auto px-6 py-2 bg-blue-500 text-white text-base rounded-lg hover:bg-blue-600 transition-colors">
               Rent Now
-            </ButtonComponent>
+            </button>
           </CardFooter>
         </Card>
       </div>

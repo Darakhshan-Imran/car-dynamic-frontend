@@ -1,9 +1,9 @@
 import { Transaction } from './transactionitems';
 import { TransactionItem } from './transactionitems';
-import carImage1 from "../../../public/cards/carImage1.png"
-import carImage2 from "../../../public/cards/carImage2.png"
-import carImage3 from "../../../public/cards/carImage3.png"
-import carImage4 from "../../../public/cards/carImage4.png"
+import carImage1 from "../../../public/popular-cars/carImage1.png"
+import carImage2 from "../../../public/popular-cars/carImage2.png"
+import carImage3 from "../../../public/popular-cars/carImage3.png"
+import carImage4 from "../../../public/popular-cars/carImage4.png"
 
 const transactions: Transaction[] = [
   {
