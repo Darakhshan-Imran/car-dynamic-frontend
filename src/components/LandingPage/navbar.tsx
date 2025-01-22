@@ -4,15 +4,19 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Search,Menu, X } from "lucide-react";
-import { iconsList } from "../../constants";
 import filterIcon from "../../../public/nav_icons/filterIcon.png"
 import SideFilterBar from '../../components/sideBarFilter' // Import the SideFilterBar component
 import { useSearch } from "@/context/SearchContext"; // Adjust path
+import { StaticImageData } from "next/image";
 
-// interface NavbarProps {
-//   searchTerm: string;
-//   handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-// }
+
+interface Icon {
+  src: string|StaticImageData;
+  alt: string;
+  width: number;
+  height: number;
+
+}
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,6 +26,15 @@ const Navbar: React.FC = () => {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
+
+  const iconsList:Icon[]=[
+  
+    { src:"/Like.png", alt:"Like", width:50, height:50 },
+    { src: "/Setting.png", alt: "setting", width: 50, height: 50},
+    { src: "/Notification.png", alt: "notification", width: 50, height: 50 },
+    { src: "/Image.png", alt: "Image", width: 50, height: 50 }
+  
+  ]
   
   return (
 
