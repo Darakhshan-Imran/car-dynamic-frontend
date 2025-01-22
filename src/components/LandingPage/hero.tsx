@@ -73,7 +73,6 @@
 "use client"
 import { useEffect, useState } from "react";
 import Image, { StaticImageData } from "next/image";
-import ButtonComponent from "../button";
 import Link from "next/link";
 import { client } from "../../sanity/lib/client";
 
@@ -144,9 +143,9 @@ const Hero = () => {
                   />
                 </div>
 
-                <ButtonComponent className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
+                <button className="px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
                   <Link href="/product">Rental Car</Link>
-                </ButtonComponent>
+                </button>
               </div>
             </div>
           </div>
