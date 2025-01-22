@@ -80,7 +80,7 @@ export default function BookingForm() {
 //
 
   return (
-    <div className="flex flex-col lg:flex-row w-full gap-2 p-4 wrapper bg-gray-50">
+    <div className="flex flex-col lg:flex-row w-full gap-2 p-4 wrapper bg-gray-50 mt-44 pb-20">
       <div className='max-w-4xl w-full lg:w-2/3 mx-auto p-6 bg-white shadow-md rounded-md'>
     <form onSubmit={handleSubmit} className="">
       {/* Form Section */}
