@@ -20,7 +20,7 @@ interface Icon {
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isFilterBarOpen, setIsFilterBarOpen] = useState(true); // State to control the filter bar visibility
+  const [isFilterBarOpen, setIsFilterBarOpen] = useState(false); // State to control the filter bar visibility
   const { searchTerm, setSearchTerm } = useSearch();
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {

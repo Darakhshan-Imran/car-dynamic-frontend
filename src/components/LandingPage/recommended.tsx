@@ -7,8 +7,6 @@ import { client } from "../../sanity/lib/client";
 import fuel_icon from "../../../public/spec-icons/fuel_icon.png";
 import transmission_icon from "../../../public/spec-icons/transmission_icon.png";
 import persons_icon from "../../../public/spec-icons/persons_icon.png";
-
-import Titlebar from "./titlebar";
 import Link from "next/link";
 
 interface ProductCard {
@@ -73,7 +71,7 @@ const RecomendedCars: React.FC = () => {
 
   return (
     <div className="wrapper mt-20">
-      <Titlebar title="Recommendation Car" />
+    
 
       {/* Updated grid with spacing */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-1 md:gap-2 lg:gap-3 gap-4 mt-7 wrapper">
