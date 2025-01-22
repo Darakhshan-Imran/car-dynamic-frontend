@@ -2,20 +2,10 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
 import RecomendedCars from "../LandingPage/recommended";
 
-interface Review {
-  rating: number; 
-  comment: string; 
-  _key: string; 
-  user: string; 
-}
-
-// interface CarReviews {
-//   reviews: Review[]; // Array of review objects
-// }
 
 const ReviewsData = [
   {
-    // image:profileimage1,
+
     name:"Alex Stanton",
     designation:"CEO at Bukalapak",
     comment:"We are very happy with the service from the MORENT App. Morent has a low price and also a large variety of cars with good and comfortable facilities. In addition, the service provided by the officers is also very friendly and very polite.",
@@ -23,7 +13,7 @@ const ReviewsData = [
 
   },
   {
-    // image:profileimage2,
+   
     name:"Skylar Dias",
     designation:"CEO at Amazon",
     comment:"We are greatly helped by the services of the MORENT Application. Morent has low prices and also a wide variety of cars with good and comfortable facilities. In addition, the service provided by the officers is also very friendly and very polite.",
