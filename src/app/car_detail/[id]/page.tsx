@@ -8,7 +8,7 @@ interface Params {
   };
 }
 
-export const getCarData = async (id: string) => {
+const getCarData = async (id: string) => {
   return await client.fetch(
     `*[_type == "cars" && id == ${id}]{
       id,
