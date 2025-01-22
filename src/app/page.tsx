@@ -7,7 +7,6 @@ import React, { useState } from "react";
 import { ArrowUpDown } from "lucide-react";
 import Link from "next/link";
 import PopularCars from "@/components/LandingPage/PopularCars";
-
 import Titlebar from "@/components/LandingPage/titlebar"; // Adjust the import path as necessary
 
 export default function Home() {
@@ -22,7 +21,7 @@ export default function Home() {
     { label: "Date", placeholder: "Select your date" },
     { label: "Time", placeholder: "Select your time" },
   ]
-  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [searchTerm] = useState<string>("");
 
 
   return (
