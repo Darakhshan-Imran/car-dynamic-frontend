@@ -2,14 +2,21 @@
 
 import { useState } from "react";
 import { VehicleFilterSidebar } from "../../components/sidebar";
-import SelectionComponent from "../../components/LandingPage/postnavbar";
+import LocationSelector from "../../components/LandingPage/postnavbar";
 import React from "react";
 import { ArrowUpDown } from "lucide-react";
 import RecomendedCars from "@/components/LandingPage/recommended";
 
 export default function Page() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const options = [
+
+  const pickupFields = [
+    { label: "Locations", placeholder: "Select your city" },
+    { label: "Date", placeholder: "Select your date" },
+    { label: "Time", placeholder: "Select your time" },
+  ];
+
+  const dropoffFields = [
     { label: "Locations", placeholder: "Select your city" },
     { label: "Date", placeholder: "Select your date" },
     { label: "Time", placeholder: "Select your time" },
@@ -52,12 +59,16 @@ export default function Page() {
           {/* Main content area */}
           <main className="flex-1">
             <div className="flex flex-col sm:flex-row wrapper gap-3 sm:gap-12 items-center">
-              <SelectionComponent title="Pick &mdash; Up" options={options} />
+              <LocationSelector title="Pick &mdash; Up" fields={pickupFields} />
+
               <div className="flex items-center justify-center w-14 h-14 bg-blue-500 text-white rounded-xl shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-200">
                 <ArrowUpDown className="w-6 h-6" />
               </div>
 
-              <SelectionComponent title="Drop &mdash; Off" options={options} />
+              <LocationSelector
+                title="Drop &mdash; Off"
+                fields={dropoffFields}
+              />
             </div>
             <RecomendedCars />
           </main>
