@@ -1,13 +1,12 @@
 import { useState } from "react";
 import Image from "next/image";
-import Ads1 from "../../../public/Ads1.png";
-import car1 from "../../../public/car1.png";
 
-interface ViewDataItem {
-  id: number;
-  src: string;
-  alt: string;
-}
+
+// interface ViewDataItem {
+//   id: number;
+//   src: string;
+//   alt: string;
+// }
 
 const ViewData = [
     {

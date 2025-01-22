@@ -1,8 +1,5 @@
  import RatingStar from "../ratingstar";
-// import profileimage1 from "../../../public/profileimage1.png";
-// import profileimage2 from "../../../../public/profileimage2.png";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import Image from "next/image";
 import RecomendedCars from "../LandingPage/recommended";
 
 interface Review {
@@ -12,9 +9,9 @@ interface Review {
   user: string; 
 }
 
-interface CarReviews {
-  reviews: Review[]; // Array of review objects
-}
+// interface CarReviews {
+//   reviews: Review[]; // Array of review objects
+// }
 
 const ReviewsData = [
   {

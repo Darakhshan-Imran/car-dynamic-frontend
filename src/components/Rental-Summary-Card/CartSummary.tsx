@@ -135,6 +135,7 @@
 import React from "react";
 import { useCart } from "@/context/CartContext";
 import Link from "next/link";
+import Image from "next/image";
 
 const CartSummary: React.FC = () => {
   const { cart } = useCart();
@@ -170,9 +171,11 @@ const CartSummary: React.FC = () => {
                 className="flex items-center mb-4 p-4 bg-white rounded-lg shadow-sm"
               >
                 {item.image && (
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.name}
+                    width={30}
+                    height={20}
                     className="w-20 h-20 rounded-lg object-cover mr-4"
                   />
                 )}

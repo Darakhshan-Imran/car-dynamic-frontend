@@ -9,8 +9,6 @@ import { client } from "../../sanity/lib/client";
 import fuel_icon from "../../../public/spec-icons/fuel_icon.png";
 import transmission_icon from "../../../public/spec-icons/transmission_icon.png";
 import persons_icon from "../../../public/spec-icons/persons_icon.png";
-
-import Titlebar from "./titlebar";
 import Link from "next/link";
 
 

@@ -1,6 +1,5 @@
 import {Heart} from 'lucide-react';
 import RatingStar from "../components/ratingstar";
-import ButtonComponent from "@/components/button";
 
 import {
     Card,
