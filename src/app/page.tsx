@@ -5,10 +5,9 @@ import RecomendedCars from "@/components/LandingPage/recommended";
 import LocationSelector from "@/components/LandingPage/postnavbar";
 import React, { useState } from "react";
 import { ArrowUpDown } from "lucide-react";
-import ButtonComponent from "@/components/button"; // Adjust the import path as necessary
 import Link from "next/link";
 import PopularCars from "@/components/LandingPage/PopularCars";
-import Navbar from "@/components/LandingPage/navbar";
+
 import Titlebar from "@/components/LandingPage/titlebar"; // Adjust the import path as necessary
 
 export default function Home() {
@@ -25,13 +24,10 @@ export default function Home() {
   ]
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-  };
 
   return (
     <div className=" bg-slate-100 flex justify-center items-center flex-col mt-32">
-      {/* <Navbar searchTerm={searchTerm} handleSearchChange={handleSearchChange} /> */}
+  
       {/* Wrapper for selection components */}
       <div className="flex flex-col sm:flex-row wrapper gap-4 sm:gap-6 lg:gap-12 items-center p-4">
         <LocationSelector title="Pick &mdash; Up" fields={pickupFields} />

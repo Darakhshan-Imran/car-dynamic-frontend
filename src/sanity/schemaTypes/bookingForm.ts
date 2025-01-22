@@ -1,4 +1,4 @@
-export default {
+const bookingFormSchema = {
     name: "carRentalForm",
     type: "document",
     title: "Car Rental",
@@ -55,4 +55,4 @@ export default {
       },
     ],
   };
-  
+  export default bookingFormSchema;
