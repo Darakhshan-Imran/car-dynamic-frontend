@@ -1,4 +1,4 @@
- import RatingStar from "../../components/ratingstar";
+ import RatingStar from "../ratingstar";
 // import profileimage1 from "../../../public/profileimage1.png";
 // import profileimage2 from "../../../../public/profileimage2.png";
 import { Plus_Jakarta_Sans } from "next/font/google";

@@ -1,0 +1,220 @@
+// if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
+//   throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
+// }
+// const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+
+// export default function Home() {
+//   // State for form data
+//   const [formData, setFormData] = useState({
+//     name: "",
+//     phoneNumber: "",
+//     address: "",
+//     city: "",
+//     pickUpLocation: "",
+//     dropOffLocation: "",
+//     pickUpDate: "",
+//     dropOffDate: "",
+//     marketingConsent: false,
+//     termsConsent: false,
+//   });
+
+//   // State for payment amount
+//   const [amount, setAmount] = useState<number | null>(null);
+
+//   // Handle form input changes
+//   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     const { name, value, type, checked } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: type === "checkbox" ? checked : value,
+//     });
+//   };
+
+//   // Handle payment amount change
+//   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+//     const value = parseFloat(e.target.value);
+//     setAmount(isNaN(value) ? null : value);
+//   };
+
+//   // Handle form submission
+//   const handleSubmit = async (e: React.FormEvent) => {
+//     e.preventDefault();
+
+//     try {
+//       const response = await fetch("/api/booking-form", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(formData),
+//       });
+
+//       const data = await response.json();
+//       if (response.ok) {
+//         alert("Form submitted successfully!");
+//       } else {
+//         console.error("Error:", data.message);
+//       }
+//     } catch (error) {
+//       console.error("Error submitting form:", error);
+//     }
+//   };
+
+//   return (
+//     <form onSubmit={handleSubmit} className="flex flex-col lg:flex-row w-full gap-2 p-4 wrapper bg-gray-50">
+//       {/* Form Section */}
+//       <div className="max-w-4xl w-full lg:w-2/3 mx-auto p-6 bg-white shadow-md rounded-md">
+//         <h1 className="text-2xl font-semibold text-center mb-6">Car Rental Form</h1>
+
+//         {/* Billing Info Section */}
+//         <div className="mb-6">
+//           <h2 className="text-xl font-semibold mb-4">Billing Info</h2>
+//           <label>Name</label>
+//           <input
+//             type="text"
+//             name="name"
+//             value={formData.name}
+//             onChange={handleChange}
+//             placeholder="Your name"
+//             className="input w-full p-2 border rounded-md mb-4"
+//             required
+//           />
+//           <label>Phone Number</label>
+//           <input
+//             type="text"
+//             name="phoneNumber"
+//             value={formData.phoneNumber}
+//             onChange={handleChange}
+//             placeholder="Phone number"
+//             className="input w-full p-2 border rounded-md mb-4"
+//             required
+//           />
+//           <label>Address</label>
+//           <input
+//             type="text"
+//             name="address"
+//             value={formData.address}
+//             onChange={handleChange}
+//             placeholder="Address"
+//             className="input w-full p-2 border rounded-md mb-4"
+//             required
+//           />
+//           <label>City</label>
+//           <input
+//             type="text"
+//             name="city"
+//             value={formData.city}
+//             onChange={handleChange}
+//             placeholder="City"
+//             className="input w-full p-2 border rounded-md"
+//             required
+//           />
+//         </div>
+
+//         {/* Rental Info Section */}
+//         <div className="mb-8 max-w-3xl mx-auto p-6 bg-white shadow-md rounded-md mt-10">
+//           <h2 className="text-xl font-semibold mb-4">Rental Info</h2>
+//           <label>Pick-Up Location</label>
+//           <input
+//             type="text"
+//             name="pickUpLocation"
+//             value={formData.pickUpLocation}
+//             onChange={handleChange}
+//             placeholder="Location"
+//             className="input w-full p-2 border rounded-md mb-4"
+//             required
+//           />
+//           <label>Drop-Off Location</label>
+//           <input
+//             type="text"
+//             name="dropOffLocation"
+//             value={formData.dropOffLocation}
+//             onChange={handleChange}
+//             placeholder="Location"
+//             className="input w-full p-2 border rounded-md mb-4"
+//             required
+//           />
+//           <label>Pick-Up Date</label>
+//           <input
+//             type="date"
+//             name="pickUpDate"
+//             value={formData.pickUpDate}
+//             onChange={handleChange}
+//             className="input w-full p-2 border rounded-md mb-4"
+//             required
+//           />
+//           <label>Drop-Off Date</label>
+//           <input
+//             type="date"
+//             name="dropOffDate"
+//             value={formData.dropOffDate}
+//             onChange={handleChange}
+//             className="input w-full p-2 border rounded-md"
+//             required
+//           />
+//         </div>
+
+//         {/* Confirmation Section */}
+//         <Confirmation />
+//         <div className="mb-6">
+//           <label>
+//             <input
+//               type="checkbox"
+//               name="marketingConsent"
+//               checked={formData.marketingConsent}
+//               onChange={handleChange}
+//             />
+//             I agree to receive marketing emails.
+//           </label>
+//           <label>
+//             <input
+//               type="checkbox"
+//               name="termsConsent"
+//               checked={formData.termsConsent}
+//               onChange={handleChange}
+//               required
+//             />
+//             I agree to the terms and conditions.
+//           </label>
+//         </div>
+
+//         {/* Payment Section */}
+//         <div className="mt-8 p-6 bg-white shadow-md rounded-md">
+//           <h2 className="text-xl font-semibold mb-4">Payment Section</h2>
+//           <label className="block text-gray-600 mb-2">Enter Amount</label>
+//           <input
+//             type="number"
+//             placeholder="Enter amount to pay"
+//             value={amount ?? ""}
+//             onChange={handleAmountChange}
+//             className="input w-full p-2 border rounded-md mb-4"
+//           />
+//           {amount !== null && (
+//             <Elements
+//               stripe={stripePromise}
+//               options={{
+//                 mode: "payment",
+//                 amount: convertToSubcurrency(amount),
+//                 currency: "usd",
+//               }}
+//             >
+//               <CheckoutPage amount={amount} />
+//             </Elements>
+//           )}
+//         </div>
+
+//         {/* Submit Button */}
+//         <div className="flex justify-end mt-6">
+//           <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+//             Rent Now
+//           </button>
+//         </div>
+//       </div>
+
+//       {/* Rental Summary Section */}
+//       <div className="w-full lg:w-1/3">
+//         <CartSummary />
+//       </div>
+//     </form>
+//   );
+// }

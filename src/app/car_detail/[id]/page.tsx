@@ -1,6 +1,6 @@
 import { client } from "../../../sanity/lib/client";
-import DetailClient from "../../../components/Booking/DetailClient";
-import ReviewDetails from "@/components/Booking/Review"
+import DetailClient from "../../../components/Rental-Summary-Card/DetailClient";
+import ReviewDetails from "@/components/Rental-Summary-Card/Review"
 
 interface Params {
   params: {
