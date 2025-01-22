@@ -12,7 +12,7 @@ interface CarCard {
   name: string;
   type: string;
   description: string;
-  originalPrice: number;
+  originalPrice: string;
   priceAfterDiscount?: string;
   fuelCapacity: string;
   transmission: string;
@@ -29,7 +29,7 @@ const DetailClient = ({ carData }: { carData: CarCard }) => {
 
   const handleAddToCart = () => {
     const { id, name, originalPrice, image } = carData;
-    addToCart({ id, name, originalPrice, image });
+    addToCart({ id, name, originalPrice, priceAfterDiscount: carData.priceAfterDiscount || "", image });
   };
 
   const ViewData = [

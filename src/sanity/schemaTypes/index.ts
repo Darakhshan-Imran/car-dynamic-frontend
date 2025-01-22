@@ -2,8 +2,9 @@ import { type SchemaTypeDefinition } from 'sanity'
 import bannerCard from './bannerCard'
 import productCard from './productCard'
 import cars from './cars'
+import carRentalForm from './bookingForm'
 
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [bannerCard, productCard, cars],
+  types: [bannerCard, productCard, cars, carRentalForm],
 }

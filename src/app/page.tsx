@@ -2,20 +2,27 @@
 
 import Hero from "@/components/LandingPage/hero";
 import RecomendedCars from "@/components/LandingPage/recommended";
-import SelectionComponent from "@/components/LandingPage/postnavbar";
+import LocationSelector from "@/components/LandingPage/postnavbar";
 import React, { useState } from "react";
 import { ArrowUpDown } from "lucide-react";
 import ButtonComponent from "@/components/button"; // Adjust the import path as necessary
 import Link from "next/link";
 import PopularCars from "@/components/LandingPage/PopularCars";
 import Navbar from "@/components/LandingPage/navbar";
+import Titlebar from "@/components/LandingPage/titlebar"; // Adjust the import path as necessary
 
 export default function Home() {
-  const options = [
+  const pickupFields = [
     { label: "Locations", placeholder: "Select your city" },
     { label: "Date", placeholder: "Select your date" },
     { label: "Time", placeholder: "Select your time" },
-  ];
+  ]
+
+  const dropoffFields = [
+    { label: "Locations", placeholder: "Select your city" },
+    { label: "Date", placeholder: "Select your date" },
+    { label: "Time", placeholder: "Select your time" },
+  ]
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,24 +30,35 @@ export default function Home() {
   };
 
   return (
-    <div className="mb-10 bg-slate-100">
-      <Navbar searchTerm={searchTerm} handleSearchChange={handleSearchChange} />
-      <div className="flex flex-col sm:flex-row wrapper gap-3 sm:gap-12 items-center">
-        <SelectionComponent title="Pick &mdash; Up" options={options} />
+    <div className=" bg-slate-100 flex justify-center items-center flex-col mt-32">
+      {/* <Navbar searchTerm={searchTerm} handleSearchChange={handleSearchChange} /> */}
+      {/* Wrapper for selection components */}
+      <div className="flex flex-col sm:flex-row wrapper gap-4 sm:gap-6 lg:gap-12 items-center p-4">
+        <LocationSelector title="Pick &mdash; Up" fields={pickupFields} />
         <div className="flex items-center justify-center w-14 h-14 bg-blue-500 text-white rounded-xl shadow-lg hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 transition duration-200">
           <ArrowUpDown className="w-6 h-6" />
         </div>
-
-        <SelectionComponent title="Drop &mdash; Off" options={options} />
+        <LocationSelector title="Drop &mdash; Off" fields={dropoffFields} />
       </div>
+
+      {/* Hero Section */}
       <Hero />
-      
-      <PopularCars searchTerm={searchTerm} />
-      <RecomendedCars/>
+
+      {/* Popular Cars */}
+      <div className="px-4">
+        <Titlebar title="Popular Cars" buttontext="View All" />
+       <PopularCars searchTerm={searchTerm} />
+      </div>
+
+      {/* Recommended Cars */}
+      <div className="px-4">
+        <RecomendedCars />
+      </div>
+   
   
-      <ButtonComponent className="flex px-6 py-2 bg-blue-500 text-white rounded-[3px] hover:bg-blue-600 transition-colors mt-10 mx-auto">
+      <button className="flex px-6 py-2 bg-blue-500 text-white rounded-[3px] hover:bg-blue-600 transition-colors mt-10 mx-auto">
         <Link href="/product">Show More Cars</Link>
-        </ButtonComponent>
+        </button>
        
     </div>
   );

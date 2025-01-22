@@ -52,7 +52,7 @@ const Confirmation = () => {
       </div>
 
       {/* Data Security */}
-      {/* <div className="mt-6 text-center">
+      <div className="mt-6 text-center">
         <div className="flex justify-center mb-2">
           <span className="text-blue-600 text-3xl">🔒</span>
         </div>
@@ -61,7 +61,7 @@ const Confirmation = () => {
           We are using the most advanced security to provide you the best
           experience ever.
         </p>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -84,7 +84,7 @@ const PopularCars: React.FC<PopularCarsProps> = ({ searchTerm })  => {
 
   return (
     <div className="wrapper mt-20">
-      <Titlebar title="Popular Cars" buttontext="View All"/>
+     
 
       {/* Updated grid with spacing */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-1 md:gap-2 lg:gap-3 gap-4 mt-7 wrapper">
