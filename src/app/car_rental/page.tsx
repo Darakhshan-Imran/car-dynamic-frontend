@@ -7,19 +7,26 @@ import car1 from "../../../public/car1.png";
 import Sidebar from "../../components/CarRentalDetails/sidenavbar";
 import LocationSelector from "../../components/LandingPage/postnavbar";
 
-const pickupFields = [
-  { label: "Locations", placeholder: "Select your city" },
-  { label: "Date", placeholder: "Select your date" },
-  { label: "Time", placeholder: "Select your time" },
-];
+type Field = {
+  label: string;
+  placeholder: string;
+  type: "location" | "date" | "time";
+};
 
-const dropoffFields = [
-  { label: "Locations", placeholder: "Select your city" },
-  { label: "Date", placeholder: "Select your date" },
-  { label: "Time", placeholder: "Select your time" },
-];
 
 export default function TransactionPage() {
+
+  const pickupFields: Field[] = [
+    { label: "Location", placeholder: "Select your city", type: "location" },
+    { label: "Pick-up Date", placeholder: "Select date", type: "date" },
+    { label: "Pick-up Time", placeholder: "Select time", type: "time" },
+  ];
+
+  const dropoffFields: Field[] = [
+    { label: "Location", placeholder: "Select your city", type: "location" },
+    { label: "Drop-off Date", placeholder: "Select date", type: "date" },
+    { label: "Drop-off Time", placeholder: "Select time", type: "time" },
+  ];
   return (
     <div className="flex min-h-screen bg-gray-100">
       <div className="hidden sm:block mt-44">
@@ -75,8 +82,8 @@ export default function TransactionPage() {
                   </div>
                 </div>
                 <div className="mt-4 sm:mt-6 space-y-4 sm:space-y-6">
-                  <LocationSelector title="Pick-Up" fields={pickupFields} />
-                  <LocationSelector title="Drop-Off" fields={dropoffFields} />
+                 <LocationSelector title="Pick &mdash; Up" fields={pickupFields} />
+                   <LocationSelector title="Drop &mdash; Off" fields={dropoffFields} />
                 </div>
               </div>
             </div>
