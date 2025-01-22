@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+import csv
 
-## Getting Started
+# Data for the test case table
+data = [
+    ["Test Case ID", "Description", "Steps", "Expected Result", "Actual Result", "Status", "Remarks"],
+    ["TC001", "Validate product listing", "Open product page > Verify products", "Products displayed", "Products displayed", "Passed", "No issues found"],
+    ["TC002", "Test API error handling", "Disconnect API > Refresh page", "Show fallback message", "Fallback message shown", "Passed", "Handled gracefully"],
+    ["TC003", "Check cart functionality", "Add item to cart > Verify cart", "Cart updates correctly", "Cart updates correctly", "Passed", "Works as expected"],
+    ["TC004", "Test responsiveness layout", "Resize window > Check layout", "Layout adjusts properly", "Layout adjusts properly", "Passed", "Responsive verified"],
+]
 
-First, run the development server:
+# File path for the CSV report
+file_path = "/mnt/data/Test_Case_Report.csv"
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+# Write data to CSV
+with open(file_path, mode="w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerows(data)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+file_path
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
