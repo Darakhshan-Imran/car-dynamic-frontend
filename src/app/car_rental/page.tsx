@@ -4,7 +4,7 @@ import Maps from "../../../public/Maps.png";
 import Image from "next/image";
 import Ads1 from "../../../public/Ads1.png";
 import car1 from "../../../public/car1.png";
-import SelectionComponent from "../../components/LandingPage/postnavbar";
+import LocationSelector from "../../components/LandingPage/postnavbar";
 import Sidebar from "../../components/CarRentalDetails/sidenavbar";
 
 type CarData = {
@@ -21,11 +21,17 @@ const carData: CarData[] = [
   { car: "MPV", color: "#A6D1F0", value: 14406 },
 ];
 
-const options = [
+const pickupFields = [
   { label: "Locations", placeholder: "Select your city" },
   { label: "Date", placeholder: "Select your date" },
   { label: "Time", placeholder: "Select your time" },
-];
+]
+
+const dropoffFields = [
+  { label: "Locations", placeholder: "Select your city" },
+  { label: "Date", placeholder: "Select your date" },
+  { label: "Time", placeholder: "Select your time" },
+]
 
 export default function TransactionPage() {
   return (
@@ -89,8 +95,8 @@ export default function TransactionPage() {
 
             {/* Pick and Drop options */}
             <div className="flex flex-col justify-start">
-              <SelectionComponent title="Pick &mdash; Up" options={options} />
-              <SelectionComponent title="Drop &mdash; Off" options={options} />
+              <LocationSelector title="Pick &mdash; Up" fields={pickupFields} />
+              <LocationSelector title="Drop &mdash; Off" fields={dropoffFields} />
             </div>
 
             {/* Recent Transactions */}
