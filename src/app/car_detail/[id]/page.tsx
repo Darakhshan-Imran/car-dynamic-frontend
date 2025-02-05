@@ -33,6 +33,8 @@ const getCarData = async (id: string) => {
 
 const CarDetailServer = async ({ params }: Params) => {
   const carData = await getCarData(params.id);
+console.log(carData)
+
   return (
   <div className="mt-44 bg-slate-100 pb-20">
   <DetailClient carData={carData} />;

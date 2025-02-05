@@ -54,15 +54,21 @@ export default defineType({
       },
       {
         name: 'priceAfterDiscount',
-        type: 'string',
+        type: 'number',
         title: 'Price After Discount',
         initialValue: null,
       },
       {
         name: 'originalPrice',
-        type: 'string',
+        type: 'number',
         title: 'Original Price',
     
+      },
+      {
+        name: "booked",
+        type: "boolean",
+        title: "Booked",
+        initialValue: false,
       },
       {
         name: 'availability',

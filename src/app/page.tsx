@@ -3,11 +3,12 @@
 import Hero from "@/components/LandingPage/hero";
 import RecomendedCars from "@/components/LandingPage/recommended";
 import LocationSelector from "@/components/LandingPage/postnavbar";
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import { ArrowUpDown } from "lucide-react";
 import Link from "next/link";
 import PopularCars from "@/components/LandingPage/PopularCars";
 import Titlebar from "@/components/LandingPage/titlebar"; // Adjust the import path as necessary
+// import { SearchProvider } from "@/context/SearchContext";
 
 type Field = {
   label: string;
@@ -28,7 +29,7 @@ export default function Home() {
     { label: "Drop-off Time", placeholder: "Select time", type: "time" },
   ];
   
-  const [searchTerm] = useState<string>("");
+  // const [searchTerm, setSearchTerm] = useState<string>("");
 
 
   return (
@@ -48,10 +49,11 @@ export default function Home() {
       <Hero />
       </div>
 
+    
       {/* Popular Cars */}
       <div className="px-4 mt-14">
         <Titlebar title="Popular Cars" buttontext="View All" />
-        <PopularCars searchTerm={searchTerm} />
+        <PopularCars/>
       </div>
 
       {/* Recommended Cars */}
@@ -59,7 +61,7 @@ export default function Home() {
         <Titlebar title="Recommendation Car" />
         <RecomendedCars />
       </div>
-   
+      
   
       <button className="flex px-8 py-4 bg-blue-500 text-white text-xl font-semibold rounded-[3px] hover:bg-blue-600 transition-colors mt-10 mx-auto">
         <Link href="/product">Show More Cars</Link>

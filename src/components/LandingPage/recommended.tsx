@@ -8,6 +8,7 @@ import fuel_icon from "../../../public/spec-icons/fuel_icon.png";
 import transmission_icon from "../../../public/spec-icons/transmission_icon.png";
 import persons_icon from "../../../public/spec-icons/persons_icon.png";
 import Link from "next/link";
+import { useSearch } from "@/context/SearchContext";
 
 interface ProductCard {
   id:number;
@@ -22,9 +23,11 @@ interface ProductCard {
   is_Favorite: boolean; // Whether the car is marked as a favorite
 }
 const RecomendedCars: React.FC = () => {
+  const { searchTerm } = useSearch(); // Get searchTerm from context
   const [cardData, setCardData] = React.useState<ProductCard[]>([]);
   const [loading, setLoading] = React.useState<boolean>(true);
   const [error, setError] = React.useState<string | null>(null);
+  const [filteredData, setFilteredData] = React.useState<ProductCard[]>([]);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -61,6 +64,13 @@ const RecomendedCars: React.FC = () => {
     fetchData();
   }, []);
 
+   React.useEffect(() => {
+      const filteredData = cardData.filter((car) =>
+        car.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredData(filteredData);
+    }, [searchTerm, cardData]); // Refilter when searchTerm or cardData changes
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -75,7 +85,7 @@ const RecomendedCars: React.FC = () => {
 
       {/* Updated grid with spacing */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-1 md:gap-2 lg:gap-3 gap-4 mt-7 wrapper">
-        {cardData.map((car, index) => (
+        {filteredData.map((car, index) => (
           <div
             key={index}
             className="rounded-xl shadow-md p-4 hover:shadow-lg transition w-[304px] h-[388px] bg-white"
@@ -119,11 +129,20 @@ const RecomendedCars: React.FC = () => {
             </div>
             <div className="flex justify-between items-center mt-12">
               <div className="flex flex-col gap-2">
-              <p className="text-lg font-bold">{car.priceAfterDiscount }</p>
-                <p className="text-lg font-bold">
-                {car.priceAfterDiscount ? <del className="text-sm font-semibold text-[#90A3BF]">{car.originalPrice}</del> : car.originalPrice}
-
-                </p>
+              <p className="text-lg font-bold">
+                      ${car.originalPrice}/day
+                    </p>
+                    <p className="text-lg font-bold">
+                      {car.priceAfterDiscount ? (
+                        <>
+                          <del className="text-sm font-semibold text-[#90A3BF]">
+                            ${car.originalPrice}
+                          </del>{" "}
+                        </>
+                      ) : (
+                        <>{car.priceAfterDiscount} </>
+                      )}
+                    </p>
               </div>
               <button className="bg-blue-500 text-white py-1 px-4 rounded hover:bg-blue-600">
               <Link href={`/car_detail/${car.id}`}>Rent Now</Link>
@@ -133,18 +152,6 @@ const RecomendedCars: React.FC = () => {
         ))}
       </div>
 
-      {/* Buttons */}
-      {/* <div className="flex gap-5 justify-center items-center">
-        <button className="px-6 py-2 bg-blue-500 text-white rounded-[3px] hover:bg-blue-600 transition-colors mt-16 mb-9">
-          <Link href="/car_detail">Show Details</Link>
-        </button>
-        <button className="px-6 py-2 bg-blue-500 text-white rounded-[3px] hover:bg-blue-600 transition-colors mt-16 mb-9">
-          <Link href="/rental_form">Booking Details</Link>
-        </button>
-        <button className="px-6 py-2 bg-blue-500 text-white rounded-[3px] hover:bg-blue-600 transition-colors mt-16 mb-9">
-          <Link href="/car_rental">Check Out</Link>
-        </button> */}
-      {/* </div> */}
     </div>
   );
 };

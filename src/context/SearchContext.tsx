@@ -1,15 +1,16 @@
-"use client"
+// context/SearchContext.tsx
+"use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState } from "react";
 
-interface SearchContextProps {
+interface SearchContextType {
   searchTerm: string;
-  setSearchTerm: (term: string) => void;
+  setSearchTerm: (value: string) => void;
 }
 
-const SearchContext = createContext<SearchContextProps | undefined>(undefined);
+const SearchContext = createContext<SearchContextType | undefined>(undefined);
 
-export const SearchProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const SearchProvider = ({ children }: { children: React.ReactNode }) => {
   const [searchTerm, setSearchTerm] = useState<string>("");
 
   return (
@@ -19,7 +20,7 @@ export const SearchProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   );
 };
 
-export const useSearch = (): SearchContextProps => {
+export const useSearch = () => {
   const context = useContext(SearchContext);
   if (!context) {
     throw new Error("useSearch must be used within a SearchProvider");

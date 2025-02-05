@@ -62,7 +62,7 @@ const preferenceItems = [
 
 const Sidebar = () => {
   return (
-    <div className="h-screen bg-white shadow-md flex flex-col w-64 lg:w-72 xl:w-80">
+    <div className="h-full bg-white shadow-md flex flex-col w-64 lg:w-72 xl:w-80">
       <div className="flex flex-col h-full">
         {/* Main Menu */}
         <div className="px-4 py-6">
