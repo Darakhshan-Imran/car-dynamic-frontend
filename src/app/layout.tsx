@@ -5,6 +5,7 @@ import Navbar from "@/components/LandingPage/navbar";
 import Footer from "@/components/LandingPage/footer";
 import { CartProvider } from "@/context/CartContext";
 import { SearchProvider } from "@/context/SearchContext";
+import { WishlistProvider } from "@/context/WishlistContext";
 
 
 const geistSans = localFont({
@@ -28,23 +29,26 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  
+
   return (
-    
-    <html lang="en">
-     
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-         <SearchProvider>
-        <Navbar/>
-       <CartProvider>
-        {children}
-        <Footer/>
-        </CartProvider>
-        </SearchProvider>
-      </body>
-      
-    </html>
+   
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+           
+          <SearchProvider>
+            <WishlistProvider>
+              <Navbar />
+              <CartProvider>
+                {children}
+                <Footer />
+              </CartProvider>
+            </WishlistProvider>
+          </SearchProvider>
+        </body>
+      </html>
     
   );
 }

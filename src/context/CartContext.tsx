@@ -6,8 +6,8 @@ import { createContext, ReactNode, useContext, useState } from "react";
 export interface CartItem  {
   id: string;
   name: string;
-  originalPrice: string;
-  priceAfterDiscount: string;
+  originalPrice: number;
+  priceAfterDiscount?: number;
   image?: string;
 };
 
@@ -28,7 +28,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeFromCart = (id: string) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+    setCart(prevCart => prevCart.filter(item => item.id !== id));
   };
 
   const clearCart = () => {

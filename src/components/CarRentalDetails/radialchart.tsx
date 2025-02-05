@@ -47,7 +47,7 @@ export function CarRentalChart() {
   return (
     <div className="w-full">
       <div className="flex justify-center lg:flex-row items-center lg:items-center ">
-        <div className="w-full max-w-[200px] h-[200px] mx-auto lg:mx-0">
+        <div className="w-full max-w-[300px] h-[300px] mx-auto overflow-hidden">
           <ChartContainer config={chartConfig} className="w-full h-full">
             <ResponsiveContainer width="100%" height="100%">
               <RadialBarChart
