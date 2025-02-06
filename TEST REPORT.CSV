@@ -18,4 +18,3 @@ with open(file_path, mode="w", newline="") as file:
     writer.writerows(data)
 
 file_path
-
