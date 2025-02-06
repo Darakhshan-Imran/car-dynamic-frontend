@@ -8,7 +8,8 @@
     "build:debug": "next build --debug",
     "start": "next start",
     "lint": "next lint",
-    "import-data": "node scripts/importSanityData.mjs"
+    "import-data": "node scripts/importSanityData.mjs",
+    "cypress:open": "cypress open"
   },
   "dependencies": {
     "@mapbox/mapbox-gl-directions": "^4.3.1",
@@ -45,6 +46,8 @@
     "@types/react-dom": "^18",
     "@types/react-icons": "^2.2.7",
     "@types/stripe": "^8.0.416",
+    "cypress": "^13.17.0",
+    "cypress-mochawesome-reporter": "^3.8.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.14",
     "postcss": "^8",

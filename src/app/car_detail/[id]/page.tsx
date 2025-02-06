@@ -36,10 +36,9 @@ const CarDetailServer = async ({ params }: Params) => {
 console.log(carData)
 
   return (
-  <div className="mt-44 bg-slate-100 pb-20">
-  <DetailClient carData={carData} />;
-
-  <ReviewDetails/>
+    <div id="car-detail-page" className="mt-44 bg-slate-100 pb-20">
+    <DetailClient  carData={carData} />
+    <ReviewDetails />
   </div>
 )};
 
