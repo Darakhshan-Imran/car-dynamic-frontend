@@ -147,19 +147,13 @@ const DetailClient = ({ carData }: { carData: CarCard }) => {
                         <>{carData?.priceAfterDiscount}</>
                       )}
                     </p>
-               {/* <p className="text-lg font-bold text-gray-900">
-                {carData?.priceAfterDiscount}
-              </p>
-              {carData?.priceAfterDiscount && (
-                <p className="text-sm font-semibold text-gray-500">
-                  <del>{carData?.originalPrice}</del>
-                </p> 
-              )} */}
+              
 
             </div>
             <button
               className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
               onClick={handleAddToCart}
+              id="book-car"
             >
               <Link href="/booking_form">Rent Now</Link>
             </button>
