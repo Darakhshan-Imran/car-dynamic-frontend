@@ -47,8 +47,12 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
       elements,
       clientSecret,
       confirmParams: {
+<<<<<<< HEAD
         // return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
          return_url: `https://car-dynamic-frontend.vercel.app/payment-success?amount=${amount}`,
+=======
+        return_url: `http://www.localhost:3000/payment-success?amount=${amount}`,
+>>>>>>> e7d494219f3bbe2f0e829d8db24b75b7fdf31009
       },
     });
 
